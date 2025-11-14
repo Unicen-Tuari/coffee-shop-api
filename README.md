@@ -31,6 +31,24 @@
 $ npm install
 ```
 
+## Environment variables
+
+- Copy `.env.example` to `.env` and adjust values as needed:
+
+```bash
+cp .env.example .env
+```
+
+- Preferred:
+  - `DATABASE_URL` (e.g., `postgres://user:pass@host:5432/dbname`)
+  - `DB_SYNC` (true/false)
+  - `PORT` (API port, defaults to `3000`)
+
+- Optional (fallback if `DATABASE_URL` is not set):
+  - `DB_HOST`, `DB_PORT`, `DB_USERNAME`, `DB_PASSWORD`, `DB_NAME`
+
+The app validates these at startup via `@nestjs/config` and `joi` and prefers `DATABASE_URL` when present.
+
 ## Compile and run the project
 
 ```bash
